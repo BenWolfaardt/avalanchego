@@ -25,14 +25,19 @@ go_library(
 
 go_test(
     name = "gasprice_test",
-    srcs = ["estimator_test.go"],
+    srcs = [
+        "block_cache_bench_test.go",
+        "estimator_test.go",
+    ],
     embed = [":gasprice"],
     deps = [
+        "//cache/lru",
         "//utils/logging",
         "//utils/logging/loggingtest",
         "//vms/saevm/blocks",
         "//vms/saevm/blocks/blockstest",
         "//vms/saevm/gastime",
+        "//vms/saevm/params",
         "//vms/saevm/saetest",
         "@com_github_ava_labs_libevm//common",
         "@com_github_ava_labs_libevm//common/math",
